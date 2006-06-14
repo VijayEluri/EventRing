@@ -1,0 +1,67 @@
+EventRing:
+
+An EventRing (or EventRingServer) is java code that instantiates a server
+program that's purpose is to give and recieve "events".  This is more of
+a framework, or library in the sense that the "events" are not meant to
+reperesent an specific information.
+
+The idea of an "event" is any thing that may be explained by a sequence
+of name/value pairs.  (This is such a generic concept that its hard
+to explain specifically.  I say this to sort of "meta" explain the idea.)
+These are fundamentally reperesented as a /etc/passwd style of string.
+ex: "name-1:val-1:name-2:val-2:name-3::"
+In the java code these string may be handled as a hash, or an array depending
+on what processing is done one them.  But, fundamentally they can always
+be represented "fully" by the string.
+
+The EventRingServer sits on a specified port, and gives and recieves these
+events to connecting clients.  The point of the generalized string
+representation of the event is so that any type of program can easily
+participate in the event transfer with the server.  It is called an Event-
+"Ring", because the events on not ordered or in any specified way.
+The EventRing is a way to allow different programs to "share" in a pool
+of events that is dynamic.
+
+It is up to both the server and clients what is done with these events.
+
+The java code basically is a simple server with a hash based data structure
+that holds these events.  There is a bunch of "String" code that validates the
+events.  
+
+The structure of an event is formarlized even though what is represents is 
+abstract.  An Event is:
+1.) an ascii-string.
+2.) begins with a "^", and ends with a "$".
+3.) the fields a seperated by a single "seperator" character.
+4.) this character is the 1st character after the "^".
+5.) the fields alternate bewteen "name" and "value" until the end
+    of the string.
+6.) there cannnot be blankm or repeated name values.
+7.) there can be blank or repeated value values.
+8.) a blank value is represented by nothing after a seperator.
+    (so 2 seps in a row tells you you have  a blank val there.)
+9.) There must be a seperator character preceding each value, and 
+    there must be an even number of values (even if they are blank.),
+    because of there very fact that they are "name" "value" pairs.
+10.) The characters can be any ascii character that is NOT a 
+     "^","$", or seperator character. (spaces are fine.)
+example:
+"^:soemeom d:asdasd :123 33::78788:$"
+This is a valid event.  Only the "value" values are blank.
+(The quotes are not a part of the string.)
+ 
+Thats it.  The EventRingServer gives and recieves these events.  The
+events are defined by an ascii string so that any program/OS/programmer
+can easy talk with the server, and understand the events.  The code
+would be used by developers that have some type of discrete events
+that they want to share between arbitrary clients.
+(One EVentRingServer can be a client of another.)
+The design is meant to be lightweight so that massive numbers of
+events/clients/servers can share events. 
+
+I use the code personally to develop music creation software.
+The "events" are mostly notes in music, but are also other
+"stuff" that happens in a performance.  The whole point of
+the generalization of these events is to not constrain what
+a program will do with the events.
+

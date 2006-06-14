@@ -1,0 +1,33 @@
+For now the events will be represented as ascii strings.
+similiar to how /etc/passwd is setup.
+
+:name1:val1:name2:val2:name3:val3:...:...  
+
+The 1st character will be the seperator for that event
+(the above could also be:
+#name1#val1#name2#val2#name3#val3#...#...    )
+
+there will be a way to just get the names, or just get the values:
+NAMES:
+:name1:name2:name3:...
+VALS:
+:val1:val2:val3:...
+
+Should we end the string with the seperator?
+(We *should* at least allow it.)
+Should we allow multiple seperators in a row?
+
+valid?:
+###name1##val1#####name2#val2#name3############val3#...#...####
+
+as strings got cutnpasted this might be helpful, and theres
+no real drawback to allowing it.
+* There is a drawback !
+The case where we might want a blank value for a name.
+
+^:asdasd:213123:wdsdf sdf sd:qddqd d dqwd: d we f wef :dwedwed:$
+^#asdasd#213123#wdsdf sdf sd#qddqd d dqwd# d we f wef #dwedwed#$
+
+--
+* The latest is we can have blank vals, but not blank keys.
+* there cannot be a trailing "sep" before the "$"
