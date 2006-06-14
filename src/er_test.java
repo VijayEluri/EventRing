@@ -61,7 +61,7 @@ public class  er_test {
     public static void process_print_all(){
         System.out.flush();
 
-        for(int i=0; i<er.get_size(); i++){
+        for(int i=0; i<er.size(); i++){
             //t1ev.print_name();
             er.get(i).print_name();
         }

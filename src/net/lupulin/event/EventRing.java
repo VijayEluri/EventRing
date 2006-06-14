@@ -4,7 +4,10 @@ package net.lupulin.event;
 
 import java.util.LinkedList;
 import java.util.Random;
-
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class EventRing {
     
@@ -24,6 +27,8 @@ public class EventRing {
         rand = new Random();
     }
 
+
+
     public void add(AbsEvent ev){
         ev_ring.add( ev );
     }
@@ -39,15 +44,56 @@ public class EventRing {
         return (AbsEvent)ev_ring.get(r);
     }
 
+    public void get_events_from_file(String ev_file){
+
+        AsciiRep ar = new AsciiRep();
+        MidiEvent ev = new MidiEvent();
+
+        //AsciiRep ar_arr
+        System.out.println("here in file reader ...");
+        BufferedReader file_in = null;
+        String line_in = null;
+        try{
+            file_in = new BufferedReader(new FileReader(ev_file));
+            try{
+                while (( line_in = file_in.readLine()) != null) {  
+                    System.out.println(  "#" + line_in + "#" );
+                    try {
+                        ar.setData( line_in );
+                        ev.set_ascii_rep( ar );
+                        ev_ring.add( ev );
+                    } catch( EventException e){
+                        System.out.println( e.toString());
+                    }
+                }
+            }
+            catch( IOException e){
+                System.out.println( e.toString() );
+            }                
+
+        } catch(FileNotFoundException e){
+            System.out.println( e.toString() );
+        }
+        
+        if( file_in != null){
+            try{
+                file_in.close();
+            } catch( IOException e){}
+        }
+    }
+
     public void test(){
         System.out.println("test...pkwEvent");
     }
-    public int get_size(){
+
+    public int size(){
         return ev_ring.size();
     }
+
     public void print_all_event_names(){
-        
     }
+
+
     public void print_name(){
             System.out.println("name: "+name);
     }

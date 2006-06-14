@@ -7,7 +7,7 @@ import java.util.Iterator;
 
 /*
   Basically, it goes like this:
-  :<name-1>:<val-2>:<n2>:<v2>:...
+  :<name-1>:<val-1>:<n2>:<v2>:...
   There is a element after every ":" (sep)
   The "val" part can be blank sp that there will be 2 seps in a row.
   (The "val" being the blank nothing that exists between the 2 seps.)
@@ -70,7 +70,7 @@ public class StringUtil {
 
         //sanity-check:
         //1st char must be sep, or throw except.
-        System.out.println( "1st char|"+str.charAt(0)+" sep|"+sep);
+        //System.out.println( "1st char|"+str.charAt(0)+" sep|"+sep);
         if( str.charAt(0) != sep ){
             throw new StringUtilException("1st char needs to be $sep in StringUtil.java");
         }
@@ -129,7 +129,7 @@ public class StringUtil {
 
         //sanity-check:
         //1st char must be sep, or throw except.
-        System.out.println( "1st char|"+str.charAt(0)+" sep|"+sep);
+        //System.out.println( "1st char|"+str.charAt(0)+" sep|"+sep);
         if( str.charAt(0) != sep ){
             throw new StringUtilException("1st char needs to be $sep in StringUtil.java");
         }
@@ -193,7 +193,7 @@ public class StringUtil {
 
     public static boolean validate( String ascii_rep, char sep ){
         boolean ret_val = false;
-        System.out.println("here in StringUtil.valdate()...");
+        //System.out.println("here in StringUtil.valdate()...");
 
         // 1 -- check that its surrounded by "^" and "$"
         char begin = ascii_rep.charAt( 0 );
@@ -212,10 +212,10 @@ public class StringUtil {
             return true;
         }
 
-        System.out.println("here in StringUtil.valdate()...2");
+        //System.out.println("here in StringUtil.valdate()...2");
 
-        System.out.println("tmp_str_1:"+tmp_str_1);
-        System.out.println("ascii_rep:"+ascii_rep);
+        //System.out.println("tmp_str_1:"+tmp_str_1);
+        //System.out.println("ascii_rep:"+ascii_rep);
         //2 -- check that the 1st char is a sep
         //System.out.println("tmp_str_1|"+tmp_str_1);
         begin = tmp_str_1.charAt( 0 );
@@ -225,7 +225,7 @@ public class StringUtil {
             return( false );
         } 
         
-        System.out.println("here in StringUtil.valdate()...3");
+        //System.out.println("here in StringUtil.valdate()...3");
 
         // 3 -- check thet there are an even number of elements 
         //     ( key/values come in pairs )

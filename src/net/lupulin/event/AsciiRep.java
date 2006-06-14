@@ -15,10 +15,15 @@ public class AsciiRep {
     public AsciiRep(){}
     public AsciiRep(String data)
         throws EventException {
-        this.data = data;
-        if( ! validate() ){
-            throw new EventException("ascii-string did not validate() in constructor");
+        try{
+            setData( data);
+        } catch(EventException e){
+            throw e;
         }
+        //this.data = data;
+        //if( ! validate() ){
+        //    throw new EventException("ascii-string did not validate() in constructor");
+        //}
     }
 
     public String toString(){
@@ -117,8 +122,13 @@ public class AsciiRep {
         return data;
     }
     
-    public void setData(String data){
+    public void setData(String data)
+        throws EventException {
+
         this.data = data;
-    }
+        if( ! validate() ){
+            throw new EventException("ascii-string did not validate() in setData()");
+        }
+     }
     
 }   

@@ -19,6 +19,10 @@ public class EventRingServer {
         sock_obj = new MultiSocketServer(port);
     }
 
+    public void set_ER( EventRing ER ){
+        this.ER = ER;
+    }
+
     public void start_server(){
         sock_obj.setup();
         sock_obj.start();
