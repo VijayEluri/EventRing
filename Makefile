@@ -14,7 +14,7 @@ all :  $(PROGRAMS)
 
 ##################################################
 
-VPATH = bin
+#VPATH = bin
 
 vpath %.java src
 vpath %.java src/net/lupulin
