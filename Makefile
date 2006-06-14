@@ -99,7 +99,7 @@ arhr_test.bin: arhr_test
 	$(BUILD)/net/lupulin/event/EventException.class  \
 	--main=$(@:.bin=) -o $(BIN)/$(@:.bin=)
 
-er_test: EventRing.class MidiEvent.class er_test.class
+er_test: init EventRing.class MidiEvent.class er_test.class
 er_test.bin: er_test
 	$(JC) $(BUILD)/$(@:.bin=.class)  \
 	$(BUILD)/net/lupulin/event/EventRing.class                 \
@@ -111,7 +111,7 @@ er_test.bin: er_test
 	$(BUILD)/net/lupulin/event/EventException.class  \
 	--main=$(@:.bin=) -o $(BIN)/$(@:.bin=)
 
-str_util_test: StringUtil.class str_util_test.class
+str_util_test: init StringUtil.class str_util_test.class
 str_util_test.bin: str_util_test
 	$(JC) $(BUILD)/$(@:.bin=.class) \
 	$(BUILD)/net/lupulin/event/util/StringUtil.class	   \
