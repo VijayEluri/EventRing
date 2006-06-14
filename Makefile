@@ -44,7 +44,7 @@ EventRing.class: EventRing.java AbsEvent.class
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
 HashRep.class: HashRep.java AsciiRep.class 
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
-AbsEvent.class: AbsEvent.java StringUtil.class
+AbsEvent.class: AbsEvent.java StringUtil.class AsciiRep.class
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
 
 ##################################################
