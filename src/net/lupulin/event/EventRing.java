@@ -3,20 +3,25 @@
 package net.lupulin.event;
 
 import java.util.LinkedList;
+import java.util.Random;
+
 
 public class EventRing {
     
     //event info stuff
     private String name;
     private LinkedList ev_ring; 
-    
+    private Random rand;
+
     //contructor
     public EventRing(){
         ev_ring = new LinkedList();
+        rand = new Random();
     }
     public EventRing(String name){
         this.name = name;
         ev_ring = new LinkedList();
+        rand = new Random();
     }
 
     public void add(AbsEvent ev){
@@ -28,6 +33,12 @@ public class EventRing {
     public AbsEvent get(int idx){
         return (AbsEvent)ev_ring.get(idx);
     }
+
+    public AbsEvent get_random(){
+        int r = rand.nextInt( ev_ring.size() );
+        return (AbsEvent)ev_ring.get(r);
+    }
+
     public void test(){
         System.out.println("test...pkwEvent");
     }

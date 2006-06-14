@@ -85,6 +85,33 @@ ers_test.bin: ers_test
 	$(BUILD)/net/lupulin/net/SocketHandler.class \
 	--main=$(@:.bin=) -o $(BIN)/$(@:.bin=)
 
+ers_tt: AbsEvent.class MidiEvent.class EventRingServer.class HashRep.class \
+	MultiSocketServer.class SocketHandler.class \
+	ers_test.class
+	@echo $<
+	@echo $@
+	@echo $*
+	@echo $?
+ers_tt.bin: ers_tt
+	@echo ERS-TT
+	@echo $<
+	@echo $@
+	@echo $*
+	@echo $?
+	@echo $(BUILD)/$(@:.bin=.class)  
+	@echo $(BUILD)/net/lupulin/event/EventRing.class                 
+	@echo $(BUILD)/net/lupulin/event/EventRingServer.class                 
+	@echo $(BUILD)/net/lupulin/event/MidiEvent.class		   
+	@echo $(BUILD)/net/lupulin/event/AsciiRep.class		   
+	@echo $(BUILD)/net/lupulin/event/HashRep.class		   
+	@echo $(BUILD)/net/lupulin/event/AbsEvent.class		   
+	@echo $(BUILD)/net/lupulin/event/util/StringUtil.class	   
+	@echo $(BUILD)/net/lupulin/event/util/StringUtilException.class  
+	@echo $(BUILD)/net/lupulin/event/EventException.class  
+	@echo $(BUILD)/net/lupulin/net/MultiSocketServer.class 
+	@echo $(BUILD)/net/lupulin/net/SocketHandler.class 
+	@echo --main=$(@:.bin=) -o $(BIN)/$(@:.bin=)
+
 arhr_test: init AsciiRep.class HashRep.class EventRing.class \
 	MidiEvent.class arhr_test.class
 arhr_test.bin: arhr_test
