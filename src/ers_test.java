@@ -24,7 +24,7 @@ public class  ers_test {
         for(int i=0; i< er.size(); i++ ){
 
             mev = (MidiEvent)er.get(i);
-            //System.out.println( mev.getData().toString() );
+            System.out.println( mev.getData().toString() );
 
         }
 

@@ -109,13 +109,16 @@ public class AsciiRep {
     public void setSep( char sep ){
         this.sep = sep;
     }
+    public char getSep(){
+        return sep;
+    }
 
     public static void test(){
         System.out.println("test...AsciiRep");
     }
     
     public void printData(){
-            System.out.println( "data: "+ data );
+        System.out.println( "data: "+ data );
     }
     
     public String getData(){

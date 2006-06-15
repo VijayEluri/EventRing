@@ -40,12 +40,13 @@ EventRingServer.class: EventRingServer.java EventRing.class  MultiSocketServer.c
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
 MultiSocketServer.class: MultiSocketServer.java SocketHandler.class
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
-EventRing.class: EventRing.java AbsEvent.class
+EventRing.class: EventRing.java AbsEvent.class MidiEvent.class
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
 HashRep.class: HashRep.java AsciiRep.class 
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
 AbsEvent.class: AbsEvent.java StringUtil.class AsciiRep.class
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
+
 
 ##################################################
 #MidiNoteGenerator:      init                        MidiNoteGenerator.class

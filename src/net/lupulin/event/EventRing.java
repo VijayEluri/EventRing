@@ -46,25 +46,27 @@ public class EventRing {
 
     public void get_events_from_file(String ev_file){
 
-        AsciiRep ar = new AsciiRep();
+        AsciiRep ar = null;
         MidiEvent ev = null;
 
         //AsciiRep ar_arr
-        System.out.println("here in file reader ...");
+        //System.out.println("here in file reader ...");
         BufferedReader file_in = null;
         String line_in = null;
         try{
             file_in = new BufferedReader(new FileReader(ev_file));
             try{
                 while (( line_in = file_in.readLine()) != null) {  
-                    System.out.println(  "#" + line_in + "#" );
+                    //System.out.println(  "#" + line_in + "#" );
                     try {
-                        ar.setData( line_in );
-                        System.out.println( "ar.toString(): " + ar.toString() );
+                        ar = null;
+                        ar = new AsciiRep(line_in);
+                        //ar.setData( line_in );
+                        //System.out.println( "ar.toString(): " + ar.toString() );
                         ev = null;
                         ev = new MidiEvent( ar );
-                        System.out.println( "ev.toString(): " + ev.toString() );
-                        ev.print();
+                        //System.out.println( "ev.toString(): " + ev.toString() );
+                        //ev.print();
                         ev_ring.add( ev );
                     } catch( EventException e){
                         System.out.println( e.toString());

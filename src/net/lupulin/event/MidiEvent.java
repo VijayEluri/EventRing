@@ -6,17 +6,20 @@ public class MidiEvent extends AbsEvent {
     
     final static public String EVENT_TYPE = "MidiEvent"; 
     
-    //private String ascii_rep;
-    private AsciiRep ascii_rep = null;
+    //do this in AbsEvent
+    //private AsciiRep ascii_rep;
 
     //constructor
     public MidiEvent(){}
     public MidiEvent( AsciiRep ascii_rep ){
-        this.ascii_rep = ascii_rep;
+        super( ascii_rep );
+        //this.ascii_rep = ascii_rep;
+        //System.out.println( ascii_rep.toString()+"POOP");
     }
-
-    public void set_ascii_rep( AsciiRep ascii_rep ){
-        this.ascii_rep = ascii_rep;
+    
+    public void print(){
+        //System.out.println( ascii_rep.toString());
+        System.out.println( data.toString());
     }
     
 }   
