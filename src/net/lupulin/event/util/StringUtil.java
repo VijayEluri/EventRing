@@ -192,7 +192,7 @@ public class StringUtil {
     } 
 
     public static boolean validate( String ascii_rep, char sep ){
-        boolean ret_val = false;
+        //boolean ret_val = false;
         //System.out.println("here in StringUtil.valdate()...");
 
         // 1 -- check that its surrounded by "^" and "$"

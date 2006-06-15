@@ -3,7 +3,7 @@
 package net.lupulin.event;
 
 import java.util.HashMap;
-import net.lupulin.event.util.StringUtil;
+//import net.lupulin.event.util.StringUtil;
 
 public abstract class AbsEvent {
     
@@ -27,14 +27,12 @@ public abstract class AbsEvent {
             System.out.println( "name: " + name );
     }
 
-    //public String serializeToString(){
-    //    StringBuffer str_buf = new StringBuffer();
-    //    str_buf.append(this.name);
-    //    return str_buf.toString();
-    //} 
-
     public String toString(){
-        return(":"+name+":");
+        if( data != null){
+            return( data.toString() );
+        } else {
+            return "NULL";
+        }
     }
     
     public AsciiRep getData(){

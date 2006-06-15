@@ -3,8 +3,8 @@
 import net.lupulin.event.EventRingServer;
 import net.lupulin.event.EventRing;
 import net.lupulin.event.MidiEvent;
-import net.lupulin.net.MultiSocketServer;
-import net.lupulin.net.SocketHandler;
+//import net.lupulin.net.MultiSocketServer;
+//import net.lupulin.net.SocketHandler;
 
 
 public class  ers_test {
@@ -24,7 +24,7 @@ public class  ers_test {
         for(int i=0; i< er.size(); i++ ){
 
             mev = (MidiEvent)er.get(i);
-            System.out.println( mev.getData().toString() );
+            //System.out.println( mev.getData().toString() );
 
         }
 
@@ -34,3 +34,10 @@ public class  ers_test {
         System.out.println("done.");        
     }
 }   
+
+
+
+
+
+
+
