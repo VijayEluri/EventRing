@@ -3,7 +3,7 @@
 package net.lupulin.event.util;
 
 import java.util.HashSet;
-import java.util.Iterator;
+//import java.util.Iterator;
 
 /*
   Basically, it goes like this:
@@ -70,25 +70,22 @@ public class StringUtil {
 
         //sanity-check:
         //1st char must be sep, or throw except.
-        //System.out.println( "1st char|"+str.charAt(0)+" sep|"+sep);
         if( str.charAt(0) != sep ){
             throw new StringUtilException("1st char needs to be $sep in StringUtil.java");
         }
 
         int cur_reg_index = 0;
-        boolean last_char_was_sep = true; //due to the above, and starting the index at 1
+        boolean last_char_was_sep = true; 
+        //due to the above, and starting the index at 1
         //we wouldn;t be here if the 1st char was NOT a sep
         for( int i=1; i<str.length(); i++ ){
-            //System.out.println("cur-char: " + str.charAt(i) );
             if( str.charAt(i) == sep ){ //cur-char IS a sep
                 if( last_char_was_sep ){
                     //thise means a sep follows right after a sep
                     regions[cur_reg_index] = "";
                     cur_reg_index++;
-                    //last_char_was_sep = false;
                 } else { // gather our new string
                     regions[cur_reg_index] = str_buf.toString();                    
-                    //System.out.println("regions[cur_reg_index] "+regions[cur_reg_index]);
                     cur_reg_index++;
                 }
                 //start over building the str_buf
@@ -96,7 +93,6 @@ public class StringUtil {
                 last_char_was_sep = true; 
             } else { //cur-char is NOT a sep
                 str_buf.append(str.charAt(i));
-                //System.out.println("str_buf["+str_buf+"]");
                 last_char_was_sep = false; 
             }
         }
@@ -129,16 +125,15 @@ public class StringUtil {
 
         //sanity-check:
         //1st char must be sep, or throw except.
-        //System.out.println( "1st char|"+str.charAt(0)+" sep|"+sep);
         if( str.charAt(0) != sep ){
             throw new StringUtilException("1st char needs to be $sep in StringUtil.java");
         }
 
         int cur_reg_index = 0;
-        boolean last_char_was_sep = true; //due to the above, and starting the index at 1
+        boolean last_char_was_sep = true; 
+        //due to the above, and starting the index at 1
         //we wouldn;t be here if the 1st char was NOT a sep
         for( int i=1; i<str.length(); i++ ){
-            //System.out.println("cur-char: " + str.charAt(i) );
             if( str.charAt(i) == sep ){ //cur-char IS a sep
                 if( last_char_was_sep ){
                     //thise means a sep follows right after a sep
@@ -147,7 +142,6 @@ public class StringUtil {
                     //last_char_was_sep = false;
                 } else { // gather our new string
                     regions[cur_reg_index] = str_buf.toString();                    
-                    //System.out.println("regions[cur_reg_index] "+regions[cur_reg_index]);
                     cur_reg_index++;
                 }
                 //start over building the str_buf
@@ -155,7 +149,6 @@ public class StringUtil {
                 last_char_was_sep = true; 
             } else { //cur-char is NOT a sep
                 str_buf.append(str.charAt(i));
-                //System.out.println("str_buf["+str_buf+"]");
                 last_char_was_sep = false; 
             }
         }
@@ -192,9 +185,6 @@ public class StringUtil {
     } 
 
     public static boolean validate( String ascii_rep, char sep ){
-        //boolean ret_val = false;
-        //System.out.println("here in StringUtil.valdate()...");
-
         // 1 -- check that its surrounded by "^" and "$"
         char begin = ascii_rep.charAt( 0 );
         char end   = ascii_rep.charAt( ascii_rep.length() - 1 );
@@ -212,21 +202,13 @@ public class StringUtil {
             return true;
         }
 
-        //System.out.println("here in StringUtil.valdate()...2");
-
-        //System.out.println("tmp_str_1:"+tmp_str_1);
-        //System.out.println("ascii_rep:"+ascii_rep);
         //2 -- check that the 1st char is a sep
-        //System.out.println("tmp_str_1|"+tmp_str_1);
         begin = tmp_str_1.charAt( 0 );
-        //System.out.println( "begin|"+begin+" sep|"+sep);
         if( begin != sep ){
             System.out.println( "BAD-no-leading-sep" );
             return( false );
         } 
         
-        //System.out.println("here in StringUtil.valdate()...3");
-
         // 3 -- check thet there are an even number of elements 
         //     ( key/values come in pairs )
         // this can be reduced to check for an even number of seps ...
