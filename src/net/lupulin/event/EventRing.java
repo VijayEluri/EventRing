@@ -19,7 +19,11 @@ public class EventRing {
 
     //contructor
     public EventRing(){
-        //ev_ring = new LinkedList();
+        ev_ring = new LinkedList();
+        rand = new Random();
+    }
+    public EventRing(LinkedList ev_ring){
+        this.ev_ring = ev_ring;
         rand = new Random();
     }
     
@@ -38,10 +42,10 @@ public class EventRing {
         return (AbsEvent)ev_ring.get(r);
     }
 
-    
+    /*
     public void get_events_from_file(String ev_file){
         ev_ring = EventRingFile.GetDataFromFile( ev_file );
-        /*
+        
         AsciiRep ar = null;
         MidiEvent ev = null;
 
@@ -82,8 +86,8 @@ public class EventRing {
                 file_in.close();
             } catch( IOException e){}
         }
-        */
-    }
+       
+    }*/
     
 
     public int size(){

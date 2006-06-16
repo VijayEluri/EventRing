@@ -8,13 +8,12 @@ public class EventRingServer {
 
     private EventRing ER;
     private int port;
-    private String name;
     private MultiSocketServer sock_obj;
 
     //contructor
     public EventRingServer(){}
-    public EventRingServer(String name, int port){
-        this.name = name;
+    public EventRingServer(int port){
+        //this.name = name;
         this.port = port;
         sock_obj = new MultiSocketServer(port);
     }
@@ -27,11 +26,7 @@ public class EventRingServer {
         sock_obj.setup();
         sock_obj.start();
     }
-
-    public void print_name(){
-            System.out.println("name: "+name);
-    }
-}   
+}
 
 /*
  * after we fall to the heavens , we go to the shroud , and then where are we.
