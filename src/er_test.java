@@ -56,16 +56,7 @@ public class  er_test {
         System.out.println( "my_choice: "+ my_choice);
         return(my_choice);
     }
-    
-    //PRINT-ALL
-    public static void process_print_all(){
-        System.out.flush();
-
-        for(int i=0; i<er.size(); i++){
-            //t1ev.print_name();
-            er.get(i).print_name();
-        }
-    }
+ 
     
 
     public static void print_main_options() {

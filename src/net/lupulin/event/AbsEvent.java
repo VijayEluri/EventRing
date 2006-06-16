@@ -2,16 +2,13 @@
 
 package net.lupulin.event;
 
-import java.util.HashMap;
+//import java.util.HashMap;
 
-public abstract class AbsEvent {
-    
-    //event info stuff
+public class AbsEvent {
     final static public String EVENT_TYPE = "AbsEvent"; 
-    protected String name = "noname";
+    
     protected AsciiRep data;
-    //protected HashMap event_info; 
-    protected char sep = ':';
+    //protected char sep = ':';
 
     //constructor
     public AbsEvent(){}

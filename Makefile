@@ -40,7 +40,9 @@ EventRingServer.class: EventRingServer.java EventRing.class  MultiSocketServer.c
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
 MultiSocketServer.class: MultiSocketServer.java SocketHandler.class
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
-EventRing.class: EventRing.java AbsEvent.class MidiEvent.class
+EventRing.class: EventRing.java EventRingFile.class AbsEvent.class MidiEvent.class
+	$(JC) $(JCOPTS) -C -d $(BUILD) $<
+EventRingFile.class: EventRingFile.java AbsEvent.class 
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
 HashRep.class: HashRep.java AsciiRep.class 
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
@@ -72,11 +74,13 @@ str-test.el: somefile.suf some-other-file.txt
 
 ers_test: init AbsEvent.class MidiEvent.class EventRingServer.class HashRep.class \
 	MultiSocketServer.class SocketHandler.class \
+	EventRingFile.class \
 	ers_test.class
 ers_test.bin: ers_test
 	$(JC) $(BUILD)/$(@:.bin=.class)  \
-	$(BUILD)/net/lupulin/event/EventRing.class                 \
-	$(BUILD)/net/lupulin/event/EventRingServer.class                 \
+	$(BUILD)/net/lupulin/event/EventRing.class      \
+	$(BUILD)/net/lupulin/event/EventRingFile.class   \
+	$(BUILD)/net/lupulin/event/EventRingServer.class        \
 	$(BUILD)/net/lupulin/event/MidiEvent.class		   \
 	$(BUILD)/net/lupulin/event/AsciiRep.class		   \
 	$(BUILD)/net/lupulin/event/HashRep.class		   \
@@ -115,11 +119,12 @@ ers_tt.bin: ers_tt
 	@echo $(BUILD)/net/lupulin/net/SocketHandler.class 
 	@echo --main=$(@:.bin=) -o $(BIN)/$(@:.bin=)
 
-arhr_test: init AsciiRep.class HashRep.class EventRing.class \
+arhr_test: init AsciiRep.class HashRep.class EventRing.class EventRingFile.class \
 	MidiEvent.class arhr_test.class
 arhr_test.bin: arhr_test
 	$(JC) $(BUILD)/$(@:.bin=.class) \
-	$(BUILD)/net/lupulin/event/EventRing.class                 \
+	$(BUILD)/net/lupulin/event/EventRing.class      \
+		$(BUILD)/net/lupulin/event/EventRingFile.class    \
 	$(BUILD)/net/lupulin/event/MidiEvent.class		   \
 	$(BUILD)/net/lupulin/event/AsciiRep.class		   \
 	$(BUILD)/net/lupulin/event/HashRep.class		   \
@@ -129,10 +134,12 @@ arhr_test.bin: arhr_test
 	$(BUILD)/net/lupulin/event/EventException.class  \
 	--main=$(@:.bin=) -o $(BIN)/$(@:.bin=)
 
-er_test: init EventRing.class MidiEvent.class er_test.class
+er_test: init EventRingFile.class EventRing.class \
+	MidiEvent.class er_test.class
 er_test.bin: er_test
 	$(JC) $(BUILD)/$(@:.bin=.class)  \
 	$(BUILD)/net/lupulin/event/EventRing.class                 \
+		$(BUILD)/net/lupulin/event/EventRingFile.class  \
 	$(BUILD)/net/lupulin/event/MidiEvent.class		   \
 	$(BUILD)/net/lupulin/event/AsciiRep.class		   \
 	$(BUILD)/net/lupulin/event/AbsEvent.class		   \

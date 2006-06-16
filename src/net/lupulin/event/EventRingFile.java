@@ -1,49 +1,21 @@
-/* EventRing.java */
-
 package net.lupulin.event;
 
-import java.util.LinkedList;
-import java.util.Random;
-
-/*
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
-*/
 
-public class EventRing {
+import java.util.LinkedList;
+
+public class EventRingFile {
+    //public String filename;
     
-    private LinkedList ev_ring; 
-    private Random rand;
+    public static LinkedList GetDataFromFile( String ev_file ){
 
-    //contructor
-    public EventRing(){
-        //ev_ring = new LinkedList();
-        rand = new Random();
-    }
-    
-    public void add(AbsEvent ev){
-        ev_ring.add( ev );
-    }
-    public void remove(int idx){
-        ev_ring.remove(idx);
-    }
-    public AbsEvent get(int idx){
-        return (AbsEvent)ev_ring.get(idx);
-    }
-
-    public AbsEvent get_random(){
-        int r = rand.nextInt( ev_ring.size() );
-        return (AbsEvent)ev_ring.get(r);
-    }
-
-    
-    public void get_events_from_file(String ev_file){
-        ev_ring = EventRingFile.GetDataFromFile( ev_file );
-        /*
+        LinkedList ev_ring_data = new LinkedList();
+        //EventRing  er = null;
         AsciiRep ar = null;
-        MidiEvent ev = null;
+        AbsEvent ev = null;
 
         //AsciiRep ar_arr
         //System.out.println("here in file reader ...");
@@ -60,10 +32,10 @@ public class EventRing {
                         //ar.setData( line_in );
                         //System.out.println( "ar.toString(): " + ar.toString() );
                         ev = null;
-                        ev = new MidiEvent( ar );
+                        ev = new AbsEvent( ar );
                         //System.out.println( "ev.toString(): " + ev.toString() );
                         //ev.print();
-                        ev_ring.add( ev );
+                        ev_ring_data.add( ev );
                     } catch( EventException e){
                         System.out.println( e.toString());
                     }
@@ -82,12 +54,7 @@ public class EventRing {
                 file_in.close();
             } catch( IOException e){}
         }
-        */
+        
+        return ev_ring_data;
     }
-    
-
-    public int size(){
-        return ev_ring.size();
-    }
-
-}   
+}
