@@ -1,0 +1,24 @@
+How does the client talk to the server?:
+
+scenario 1:
+Maybe communicate via "events"?
+-) server sends an event representing a "ready to serve" and/or 
+   whats on the menu.
+-) client sends an event representing the request for an event.
+-) the server sends the event
+-) repeat as needed while connected
+-) there is a disconnect event that will break the socket-thread
+-) the socket-thread can also break on a certain time-out
+
+
+scenario 2:
+less verbose.
+client and server know ahead of time how to communicate and whats
+avilable.
+-) client connects to server
+-) server replies with and event
+
+
+scenario 3:
+a hybrid
+client connects
