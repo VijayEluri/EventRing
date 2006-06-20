@@ -36,7 +36,7 @@ MidiEvent.class: MidiEvent.java  AsciiRep.class
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
 AsciiRep.class:  AsciiRep.java StringUtil.class EventException.class
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
-EventRingServer.class: EventRingServer.java EventRing.class
+EventRingServer.class: EventRingServer.java EventRing.class ERSSocketHandler.class
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
 EventRing.class: EventRing.java EventRingFile.class AbsEvent.class MidiEvent.class
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<

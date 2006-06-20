@@ -13,11 +13,17 @@ import net.lupulin.event.EventRing;
 public class ERSSocketHandler extends Thread {
 
     public Socket incoming;
-
+    private EventRing ER;
+    
     public ERSSocketHandler(Socket incoming, EventRing er) {
         this.incoming = incoming;
+        this.ER = er;
     }
 
+    private void process_input( String input ){
+        
+    }
+    
     public void run() {
         try {
             BufferedReader reader =
@@ -34,7 +40,10 @@ public class ERSSocketHandler extends Thread {
                     done = true;
                 else {
                     out.println("this: " + str);
+                    out.println( ER.get(1).toString() );
                     System.out.println("ERS: " + str);
+                    System.out.println( "ER.size(): " + ER.size());
+                    System.out.println( ER.get(1).toString() );
                     if( str.trim().equals("exit") ){
                         done = true;
                     }
