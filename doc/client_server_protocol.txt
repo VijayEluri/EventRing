@@ -34,3 +34,5 @@ events:
 "hangup connection" event:
 ^:HANGUP:$
 
+"gimme list of options" event:
+^:QUERY:$

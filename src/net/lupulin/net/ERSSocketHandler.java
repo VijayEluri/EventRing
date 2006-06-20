@@ -20,8 +20,21 @@ public class ERSSocketHandler extends Thread {
         this.ER = er;
     }
 
-    private void process_input( String input ){
+    private void process_input( PrintStream out, String input, boolean done ){
+
+        if( input == null ) 
+            done = true;
+        else {
+            out.println("this: " + input );
+            out.println( ER.get(1).toString() );
+            System.out.println("ERS: " + input);
+            System.out.println( "ER.size(): " + ER.size());
+            System.out.println( ER.get(1).toString() );
+        }   
         
+        if( input.trim().equals("exit") ){
+            done = true;
+        }
     }
     
     public void run() {
@@ -37,19 +50,11 @@ public class ERSSocketHandler extends Thread {
             boolean done = false;
             while( ! done){
                 String str = reader.readLine();
-                if( str == null ) 
-                    done = true;
-                else {
-                    out.println("this: " + str);
-                    out.println( ER.get(1).toString() );
-                    System.out.println("ERS: " + str);
-                    System.out.println( "ER.size(): " + ER.size());
-                    System.out.println( ER.get(1).toString() );
-                    if( str.trim().equals("exit") ){
-                        done = true;
-                    }
-                }
+
+                process_input( out, str, done );
+        
             }
+            
             incoming.close();
         } catch(IOException e) {
             e.printStackTrace();

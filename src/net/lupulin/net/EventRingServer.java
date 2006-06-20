@@ -10,9 +10,9 @@ import net.lupulin.event.EventRing;
 
 public class EventRingServer {
     
-    private EventRing ER;
+    private EventRing event_ring;
     private int port = 6160;
-    private int PORT = 6160; //default (for now)
+    //private int PORT = 6160; //default (for now)
     private ServerSocket server_sock;
     //private String conf_file = null;
   
@@ -20,17 +20,17 @@ public class EventRingServer {
     public EventRingServer(){}
     public EventRingServer(int port){
         this.port = port;
-        this.PORT = port;
+        //this.PORT = port;
     }
 
-    public void set_ER( EventRing ER ){
-        this.ER = ER;
+    public void set_ER( EventRing event_ring ){
+        this.event_ring = event_ring;
     }
     
     /* -- */
     public boolean setup_server() {
         try {
-            server_sock = new ServerSocket( PORT );
+            server_sock = new ServerSocket( port );
         } catch(IOException e) {
             System.out.println(e);
             return false;
@@ -51,7 +51,7 @@ public class EventRingServer {
                 continue;
             }
 
-            new ERSSocketHandler( incoming, ER ).start();
+            new ERSSocketHandler( incoming, event_ring ).start();
         }
     }
         
