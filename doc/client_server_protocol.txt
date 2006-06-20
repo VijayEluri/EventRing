@@ -22,3 +22,15 @@ avilable.
 scenario 3:
 a hybrid
 client connects
+
+events:
+
+"general ready to serve events" event:
+^:READY:$
+
+"give me an event" event:
+^:GIVE:$
+
+"hangup connection" event:
+^:HANGUP:$
+

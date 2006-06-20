@@ -31,7 +31,8 @@ public class ERSSocketHandler extends Thread {
         
             PrintStream out = new PrintStream(incoming.getOutputStream());
 	    
-            out.println("ERS: enter \"exit\" to exit...");
+            //out.println("ERS: enter \"exit\" to exit...");
+            out.println("^:READY:$");
 	    
             boolean done = false;
             while( ! done){
