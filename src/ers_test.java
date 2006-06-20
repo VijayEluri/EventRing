@@ -26,7 +26,7 @@ public class  ers_test {
 
         }
 
-        //ers.start_server();
+        ers.start_server();
 
 
         System.out.println("done.");        

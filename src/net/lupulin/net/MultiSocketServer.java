@@ -41,7 +41,7 @@ public class MultiSocketServer {
                 continue;
             }
 
-            new SocketHandler(incoming).start();
+            new ERSSocketHandler(incoming).start();
         }
     }
         

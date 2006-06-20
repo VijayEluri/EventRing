@@ -1,15 +1,15 @@
-/* SocketHandler.java */
+/* ERSSocketHandler.java */
 
 package net.lupulin.net;
 
 import java.io.*;
 import java.net.*;
 
-public class SocketHandler extends Thread {
+public class ERSSocketHandler extends Thread {
 
     public Socket incoming;
 
-    public SocketHandler(Socket incoming) {
+    public ERSSocketHandler(Socket incoming) {
         this.incoming = incoming;
     }
 
@@ -21,7 +21,7 @@ public class SocketHandler extends Thread {
             PrintStream out =
                 new PrintStream(incoming.getOutputStream());
 	    
-            out.println("enter \"exit\" to exit...");
+            out.println("ERS: enter \"exit\" to exit...");
 	    
             boolean done = false;
             while( ! done){
@@ -30,7 +30,7 @@ public class SocketHandler extends Thread {
                     done = true;
                 else {
                     out.println("this: " + str);
-                    System.out.println("this: " + str);
+                    System.out.println("ERS: " + str);
                     if( str.trim().equals("exit") ){
                         done = true;
                     }
