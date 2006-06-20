@@ -1,6 +1,6 @@
 /* ers_test.java */
 
-import net.lupulin.event.EventRingServer;
+import net.lupulin.net.EventRingServer;
 import net.lupulin.event.EventRing;
 import net.lupulin.event.EventRingFile;
 //import net.lupulin.event.MidiEvent;
@@ -26,6 +26,7 @@ public class  ers_test {
 
         }
 
+        ers.setup_server();
         ers.start_server();
 
 

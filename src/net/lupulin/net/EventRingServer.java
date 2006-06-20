@@ -1,24 +1,34 @@
-/* MultiSocketServer */
+/* EventRingServer.java */
 
 package net.lupulin.net;
 
-import java.io.*;
-import java.net.*;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 
-public class MultiSocketServer {
+import net.lupulin.event.EventRing;
+
+public class EventRingServer {
     
+    private EventRing ER;
+    private int port = 6160;
     private int PORT = 6160; //default (for now)
     private ServerSocket server_sock;
     //private String conf_file = null;
-    
-    public MultiSocketServer(){
+  
+    //contructor
+    public EventRingServer(){}
+    public EventRingServer(int port){
+        this.port = port;
+        this.PORT = port;
     }
-    public MultiSocketServer(int PORT){
-        this.PORT = PORT;
+
+    public void set_ER( EventRing ER ){
+        this.ER = ER;
     }
     
     /* -- */
-    public boolean setup() {
+    public boolean setup_server() {
         try {
             server_sock = new ServerSocket( PORT );
         } catch(IOException e) {
@@ -30,7 +40,7 @@ public class MultiSocketServer {
     }
     
     /* -- */
-    public void start(){  
+    public void start_server(){  
     
         while (true) {  
             Socket incoming = null;
@@ -41,10 +51,9 @@ public class MultiSocketServer {
                 continue;
             }
 
-            new ERSSocketHandler(incoming).start();
+            new ERSSocketHandler( incoming, ER ).start();
         }
     }
         
  
 }
-

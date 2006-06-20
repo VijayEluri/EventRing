@@ -2,14 +2,19 @@
 
 package net.lupulin.net;
 
-import java.io.*;
-import java.net.*;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.net.Socket;
+
+import net.lupulin.event.EventRing;
 
 public class ERSSocketHandler extends Thread {
 
     public Socket incoming;
 
-    public ERSSocketHandler(Socket incoming) {
+    public ERSSocketHandler(Socket incoming, EventRing er) {
         this.incoming = incoming;
     }
 
@@ -18,8 +23,7 @@ public class ERSSocketHandler extends Thread {
             BufferedReader reader =
                 new BufferedReader(new InputStreamReader(incoming.getInputStream()));
         
-            PrintStream out =
-                new PrintStream(incoming.getOutputStream());
+            PrintStream out = new PrintStream(incoming.getOutputStream());
 	    
             out.println("ERS: enter \"exit\" to exit...");
 	    

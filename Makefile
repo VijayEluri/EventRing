@@ -36,9 +36,7 @@ MidiEvent.class: MidiEvent.java  AsciiRep.class
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
 AsciiRep.class:  AsciiRep.java StringUtil.class EventException.class
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
-EventRingServer.class: EventRingServer.java EventRing.class  MultiSocketServer.class
-	$(JC) $(JCOPTS) -C -d $(BUILD) $<
-MultiSocketServer.class: MultiSocketServer.java ERSSocketHandler.class
+EventRingServer.class: EventRingServer.java EventRing.class
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
 EventRing.class: EventRing.java EventRingFile.class AbsEvent.class MidiEvent.class
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
@@ -73,14 +71,14 @@ str-test.el: somefile.suf some-other-file.txt
 
 
 ers_test: init AbsEvent.class MidiEvent.class EventRingServer.class HashRep.class \
-	MultiSocketServer.class ERSSocketHandler.class \
+	ERSSocketHandler.class \
 	EventRingFile.class \
 	ers_test.class
 ers_test.bin: ers_test
 	$(JC) $(BUILD)/$(@:.bin=.class)  \
 	$(BUILD)/net/lupulin/event/EventRing.class      \
 	$(BUILD)/net/lupulin/event/EventRingFile.class   \
-	$(BUILD)/net/lupulin/event/EventRingServer.class        \
+	$(BUILD)/net/lupulin/net/EventRingServer.class        \
 	$(BUILD)/net/lupulin/event/MidiEvent.class		   \
 	$(BUILD)/net/lupulin/event/AsciiRep.class		   \
 	$(BUILD)/net/lupulin/event/HashRep.class		   \
@@ -88,7 +86,6 @@ ers_test.bin: ers_test
 	$(BUILD)/net/lupulin/event/util/StringUtil.class	   \
 	$(BUILD)/net/lupulin/event/util/StringUtilException.class  \
 	$(BUILD)/net/lupulin/event/EventException.class  \
-	$(BUILD)/net/lupulin/net/MultiSocketServer.class \
 	$(BUILD)/net/lupulin/net/ERSSocketHandler.class \
 	--main=$(@:.bin=) -o $(BIN)/$(@:.bin=)
 
