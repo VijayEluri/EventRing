@@ -46,6 +46,8 @@ HashRep.class: HashRep.java AsciiRep.class
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
 AbsEvent.class: AbsEvent.java StringUtil.class AsciiRep.class
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
+#ERSSocketHandler.class: ERSSocketHandler.java ers_return_value.class 
+#	$(JC) $(JCOPTS) -C -d $(BUILD) $<
 
 
 ##################################################

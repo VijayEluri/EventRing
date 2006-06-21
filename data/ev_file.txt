@@ -1,3 +1,5 @@
 ^:n1:v1:n2:v2:n3:v3$
 ^:Proper Name:soeomeomome:WWW:webb ww:BE::ASDF:qwert $
 ^:UffDa:hafat-bafta:somor:timor:boob:spagetti:rudy:dander$
+^:NN1:VV1:NN2:VV2:NN3:VV3$
+^:ASD1:v1:ASD2:v2:ASD3:v3$

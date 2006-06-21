@@ -32,7 +32,7 @@ events:
 ^:GIVE:$
 
 "hangup connection" event:
-^:HANGUP:$
+^:HANGUP:$ ( ^:QUIT:$ )
 
 "gimme list of options" event:
 ^:QUERY:$

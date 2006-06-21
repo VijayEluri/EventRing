@@ -20,21 +20,37 @@ public class ERSSocketHandler extends Thread {
         this.ER = er;
     }
 
-    private void process_input( PrintStream out, String input, boolean done ){
+    private boolean process_input( PrintStream out, String input ){
 
-        if( input == null ) 
-            done = true;
-        else {
-            out.println("this: " + input );
-            out.println( ER.get(1).toString() );
-            System.out.println("ERS: " + input);
-            System.out.println( "ER.size(): " + ER.size());
-            System.out.println( ER.get(1).toString() );
-        }   
+        //boolean ret_val = false;
+        boolean done = false;
         
-        if( input.trim().equals("exit") ){
+        input = input.trim();
+        
+        if( input == null ){ 
             done = true;
         }
+        //out.println("this: " + input );
+        //out.println( ER.get(1).toString() );
+        //System.out.println("input: " + input);
+        //System.out.println( ER.get(1).toString() );
+        
+        
+        if(        input.equals( "^:QUIT:$" ) || input.equals( "quit" ) ){
+            done = true;
+        } else if( input.equals( "^:GET:$" ) || input.equals( "get" ) ){
+            out.println( ER.get_random().toString() );
+            //out.println( ER.get(0).toString() );
+        } else if( input.equals( "^:KILL:$" ) || input.equals( "kill" )){
+            //kill server
+        } else if( input.equals( "^:QUERY:$" ) || input.equals( "query" )){
+            //query server for options (event-encoded-of-course)
+            out.println( "^:QUIT::QUERY::GET:KILL:$" );
+        } else {
+            out.println( "^:UNKNOWN:$" );
+        }
+        
+        return done;
     }
     
     public void run() {
@@ -50,9 +66,8 @@ public class ERSSocketHandler extends Thread {
             boolean done = false;
             while( ! done){
                 String str = reader.readLine();
-
-                process_input( out, str, done );
-        
+                System.out.println("recvd: " + str );
+                done = process_input( out, str );
             }
             
             incoming.close();
