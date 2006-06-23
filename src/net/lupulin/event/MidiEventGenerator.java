@@ -1,28 +1,31 @@
+/* MidiEventGenerator.java */
 
 package net.lupulin.event;
 
 import java.util.Random;
 import java.util.HashMap;
 
-public class  MidiNoteGenerator {
+public class  MidiEventGenerator {
     
     Random rand = null;
 
     HashMap midi_hash = null;
 
-    public MidiNoteGenerator(){
+    public MidiEventGenerator(){
         rand = new Random();
         midi_hash = new HashMap();
     }   
     
-    /*  as d asd a d asd as d */
-
     public void test(){
         System.out.println(  random_midi_note() );
     }
 
-    private int random_midi_note(){
+    private int rand_0_127(){
         return rand.nextInt(128); /* 0-127 */
+    }
+
+    private int random_midi_note(){
+        return rand_0_127();
     }   
     
 }
