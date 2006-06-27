@@ -1,14 +1,15 @@
+/* meg_test.java */
 
 import net.lupulin.event.*; 
 
 public class  meg_test {
 
     public static void main( String[] args ){
-        System.out.println("mng-test...");
+        System.out.println("meg-test...");
 
-        MidiEventGenerator mng = new  MidiEventGenerator();
+        MidiEventGenerator meg = new  MidiEventGenerator();
 
-        mng.test();
+        meg.test();
 
     }
 

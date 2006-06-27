@@ -32,7 +32,9 @@ vpath %.class build/net/lupulin/net
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
 StringUtil.class: StringUtil.java StringUtilException.class
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
-MidiEvent.class: MidiEvent.java  AsciiRep.class    	   
+MidiEvent.class: MidiEvent.java  AsciiRep.class AbsEvent.class
+	$(JC) $(JCOPTS) -C -d $(BUILD) $<
+MidiEventGenerator.class: MidiEventGenerator.java MidiEvent.class
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
 AsciiRep.class:  AsciiRep.java StringUtil.class EventException.class
 	$(JC) $(JCOPTS) -C -d $(BUILD) $<
@@ -49,10 +51,6 @@ AbsEvent.class: AbsEvent.java StringUtil.class AsciiRep.class
 
 
 ##################################################
-#MidiNoteGenerator:      init                        MidiNoteGenerator.class
-#EventException:         init                        EventException.class
-#AbsEvent:               init                        AbsEvent.class
-#SocketHandler:     init SocketHandler.class
 
 
 ### TESTING stuff ###

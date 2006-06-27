@@ -45,7 +45,7 @@ public class ERSSocketHandler extends Thread {
             //kill server
         } else if( input.equals( "^:QUERY:$" ) || input.equals( "query" )){
             //query server for options (event-encoded-of-course)
-            out.println( "^:QUIT::QUERY::GET:KILL:$" );
+            out.println( "^:QUIT::QUERY::GET::KILL:$" );
         } else {
             out.println( "^:UNKNOWN:$" );
         }

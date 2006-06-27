@@ -8,6 +8,7 @@ public class MidiEvent extends AbsEvent {
     private int note;
     private int duration;
     private int velocity;
+    private int channel;
     
     //constructor
     public MidiEvent(){}
