@@ -1,7 +1,7 @@
 ### Makefile ###
 
-PROGRAMS  = ers_test.bin arhr_test.bin er_test.bin str_util_test.bin
-#PROGRAMS += r-test note-test note-player-test timer-test
+PROGRAMS  =  ers_test.bin arhr_test.bin er_test.bin str_util_test.bin
+PROGRAMS  += meg_test.bin
 
 SRC      = src
 BIN      = bin
@@ -72,6 +72,12 @@ meg_test: init MidiEventGenerator.class meg_test.class
 meg_test.bin: meg_test
 	$(JC) $(BUILD)/$(@:.bin=.class)  \
 	$(BUILD)/net/lupulin/event/MidiEventGenerator.class \
+	$(BUILD)/net/lupulin/event/MidiEvent.class \
+	$(BUILD)/net/lupulin/event/AbsEvent.class \
+	$(BUILD)/net/lupulin/event/AsciiRep.class \
+	$(BUILD)/net/lupulin/event/EventException.class  \
+	$(BUILD)/net/lupulin/event/util/StringUtil.class	   \
+	$(BUILD)/net/lupulin/event/util/StringUtilException.class  \
 	--main=$(@:.bin=) -o $(BIN)/$(@:.bin=)
 
 ers_test: init AbsEvent.class MidiEvent.class EventRingServer.class HashRep.class \
