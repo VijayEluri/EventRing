@@ -5,10 +5,10 @@ package net.lupulin.event;
 public class MidiEvent extends AbsEvent {
     final static public String EVENT_TYPE = "MidiEvent"; 
 
-    private int note;
-    private int duration;
-    private int velocity;
-    private int channel;
+    private int note;      // 0 - 127
+    private int duration;  // 0 - 127
+    private int velocity;  // 0 - 127
+    private int channel;   // 0 - 15
     
     //constructor
     public MidiEvent(){}

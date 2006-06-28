@@ -7,13 +7,16 @@ import java.util.HashMap;
 
 public class  MidiEventGenerator {
     
-    Random rand = null;
+    Random rand;
 
-    HashMap midi_hash = null;
+    //HashMap midi_hash = null;
+
+    MidiEvent place_holder ;
 
     public MidiEventGenerator(){
         rand = new Random();
-        midi_hash = new HashMap();
+        //midi_hash = new HashMap();
+        place_holder = new MidiEvent();
     }   
     
     public void test(){
@@ -27,5 +30,11 @@ public class  MidiEventGenerator {
     private int random_midi_note(){
         return rand_0_127();
     }   
+    
+    public MidiEvent randMidiEvent(){
+        MidiEvent me = new MidiEvent();
+
+        return me;
+    }
     
 }
