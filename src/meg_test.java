@@ -11,7 +11,16 @@ public class  meg_test {
         MidiEvent me = new MidiEvent();
         MidiEventGenerator meg = new  MidiEventGenerator();
 
-        meg.test();
+
+
+        MidiEvent me1 = meg.getRandMidiEvent();
+
+        System.out.println( me1.toString() );
+
+
+        for( int i=0; i< 20; i++ ){
+            System.out.println( meg.getRandMidiEvent().toString() );
+        }
 
     }
 

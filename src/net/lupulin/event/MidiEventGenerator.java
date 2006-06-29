@@ -16,9 +16,8 @@ public class  MidiEventGenerator {
     public MidiEventGenerator(){
         rand = new Random();
         //midi_hash = new HashMap();
-        place_holder = new MidiEvent();
     }   
-    
+
     public void test(){
         System.out.println(  random_midi_note() );
     }
@@ -27,13 +26,27 @@ public class  MidiEventGenerator {
         return rand.nextInt(128); /* 0-127 */
     }
 
+    private int rand_0_15(){
+        return rand.nextInt(16); /* 0-15 */
+    }
+
     private int random_midi_note(){
         return rand_0_127();
     }   
-    
-    public MidiEvent randMidiEvent(){
+
+    public MidiEvent getRandMidiEvent(){
         MidiEvent me = new MidiEvent();
 
+        int note  =  rand_0_127();    
+        int dur   =  rand_0_127();  
+        int vel   =  rand_0_127();  
+        int chan  =  rand_0_15();   
+
+        me.set_note(note);
+        me.set_duration(dur);
+        me.set_velocity(vel);
+        me.set_channel(chan);
+        
         return me;
     }
     
