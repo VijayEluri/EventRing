@@ -1,7 +1,5 @@
 ### Makefile ###
 
-#test
-
 PROGRAMS  =  ers_test.bin arhr_test.bin er_test.bin str_util_test.bin
 PROGRAMS  += meg_test.bin
 
