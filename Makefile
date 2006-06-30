@@ -68,7 +68,7 @@ str-test.el: somefile.suf some-other-file.txt
 	@echo $(@:.el=.suf2)
 #####################
 
-basic_er_server: init EventRingServer.class  basic_er_server.class
+basic_er_server: init EventRingServer.class MidiEventGenerator.class basic_er_server.class
 basic_er_server.bin: basic_er_server
 	$(JC) $(BUILD)/$(@:.bin=.class)  \
 	$(BUILD)/net/lupulin/net/EventRingServer.class  \
@@ -79,6 +79,8 @@ basic_er_server.bin: basic_er_server
 	$(BUILD)/net/lupulin/event/EventException.class  \
 	$(BUILD)/net/lupulin/event/util/StringUtil.class  \
 	$(BUILD)/net/lupulin/event/util/StringUtilException.class \
+	$(BUILD)/net/lupulin/event/MidiEventGenerator.class \
+	$(BUILD)/net/lupulin/event/MidiEvent.class \
 	--main=$(@:.bin=) -o $(BIN)/$(@:.bin=)
 
 meg_test: init MidiEventGenerator.class meg_test.class
