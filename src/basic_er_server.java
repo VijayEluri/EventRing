@@ -13,15 +13,13 @@ public class  basic_er_server {
 
         ers.set_ER( er );
 
-        for(int i=0; i< 10; i++ ){
+        for( int i=0; i< 999; i++ ){
             er.add( meg.getRandMidiEvent() );
         }
 
-        /*
-          for( int i=0; i<er.size(); i++){
+        for( int i=0; i<er.size(); i++){
           System.out.println( er.get(i).toString() );
-          }
-        */
+        }
 
         ers.setup_server();
         ers.start_server();
