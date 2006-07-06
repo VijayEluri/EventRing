@@ -66,7 +66,7 @@ public class ERSSocketHandler extends Thread {
             boolean done = false;
             while( ! done){
                 String str = reader.readLine();
-                System.out.println("recvd: " + str );
+                System.out.println("recvd [" + str + "]" );
                 done = process_input( out, str );
             }
             
