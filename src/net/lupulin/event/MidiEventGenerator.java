@@ -30,6 +30,10 @@ public class  MidiEventGenerator {
         return rand.nextInt(16); /* 0-15 */
     }
 
+    private int rand_1_4(){
+        return rand.nextInt(4) + 1; /* 1-4 */
+    }
+
     private int random_midi_note(){
         return rand_0_127();
     }   
@@ -38,7 +42,7 @@ public class  MidiEventGenerator {
         MidiEvent me = new MidiEvent();
 
         int note  =  rand_0_127();    
-        int dur   =  rand_0_127();  
+        int dur   =  rand_1_4();  
         int vel   =  rand_0_127();  
         int chan  =  rand_0_15();   
 
