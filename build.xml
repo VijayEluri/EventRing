@@ -1,265 +1,71 @@
-<?xml version="1.0" ?>
-<project default="run-ev-test" basedir=".">
 
-	<property name="src"     location="src"      />
-	<property name="build"   location="build"    />
-	<property name="classes" location="classses" />
-	<property name="dist"    location="dist"     />
+<project name="eventring" 
+         default="test" 
+         basedir=".">
+	<description>event-ring</description>
 
-	<!-- CLASSPATH -->
-	<path id="classpath">
-		<pathelement location="build" />
+
+	<!-- set global properties for this build -->
+	<property name="src"    location="src"/>
+	<property name="build"  location="build"/>
+	<property name="dist"   location="dist"/>
+	<property name="lib"    location="lib"/>
+	<property name="images" location="images"/>
+
+	<path id="er.classpath">
+		<pathelement location="${build}"/>
+		<!--
+      	<fileset dir="${build}" casesensitive="yes">
+         	<include name="**/*.class"/>
+          	<exclude name="**/*Test*"/> 
+      	</fileset>
+      	-->
+		<fileset dir="${lib}">
+			<include name="**/*.jar"/>
+		</fileset>
 	</path>
 
-	<!-- *********** BASE-CLASSES *********** -->
-        <!--
-            src/net/lupulin/event/
-            EventRing.java          HashRep.java            Type1Event.java
-            AsciiRep.java           EventRingServer.java         Type2Event.java
-            EventUtil.java 
-        -->
-
-        <!-- EVENT-EXCEPTION -->
-        <!-- EventException -->
-        <target name="event-exception" depends="init">
-          <javac srcdir="${src}" destdir="${build}">
-            <include name="net/lupulin/event/EventException.java" />
-          </javac>
-        </target> 
-
-        <!-- EventRing -->
-        <target name="event-ring" depends="midi-event">
-          <javac srcdir="${src}" destdir="${build}">
-            <include name="net/lupulin/event/EventRing.java" />
-          </javac>
-        </target> 
-
-        <!-- EventRingServer -->
-        <target name="event-ring-server" depends="event-ring">
-          <javac srcdir="${src}" destdir="${build}">
-            <include name="net/lupulin/event/EventRingServer.java" />
-          </javac>
-        </target> 
-
-        <!-- STRING-UTIL-EXCEPTION -->
-        <target name="string-util-exception" depends="init">
-          <javac srcdir="${src}" destdir="${build}">
-            <include name="net/lupulin/event/util/StringUtilException.java" />
-          </javac>
-        </target> 
-
-        <!-- MIDI-NOTE-GENERATOR -->
-        <target name="midi-note-generator" depends="init">
-          <javac srcdir="${src}" destdir="${build}">
-            <include name="net/lupulin/event/MidiNoteGenerator.java" />
-          </javac>
-        </target> 
-        <!-- MIDI-EVENT -->
-        <target name="midi-event" depends="abs-event, ascii-rep">
-          <javac srcdir="${src}" destdir="${build}">
-            <include name="net/lupulin/event/MidiEvent.java" />
-          </javac>
-        </target> 
-
-        <!-- ABS-EVENT -->
-        <target name="abs-event" depends="init">
-          <javac srcdir="${src}" destdir="${build}">
-            <include name="net/lupulin/event/AbsEvent.java" />
-          </javac>
-        </target>
-        <!-- TYPE1-EVENT -->
-        <target name="type1-event" depends="init">
-          <javac srcdir="${src}" destdir="${build}">
-            <include name="net/lupulin/event/Type1Event.java" />
-          </javac>
-        </target>
-
-        <!-- ASCII-REP -->
-        <target name="ascii-rep" depends="event-exception, string-util">
-          <javac srcdir="${src}" destdir="${build}">
-            <include name="net/lupulin/event/AsciiRep.java" />
-          </javac>
-        </target>
-        <!-- STRING-UTIL -->
-        <target name="string-util" depends="string-util-exception">
-          <javac srcdir="${src}" destdir="${build}">
-            <include name="net/lupulin/event/util/StringUtil.java" />
-          </javac>
-        </target>
-        <!-- HASH-REP -->
-        <target name="hash-rep" depends="ascii-rep">
-          <javac srcdir="${src}" destdir="${build}">
-            <include name="net/lupulin/event/HashRep.java" />
-          </javac>
-        </target>
-
-
-
-
-	
-	<!-- *********** TEST TEST TEST *********** -->
-	<!--  EV-TEST  -->
-	<target name="ev-test" depends="init">
-		<javac srcdir="${src}" destdir="${build}">
-			<include name="ev_test.java" />
-		</javac>
-	</target>
-	<!--  RUN-EV-TEST  -->
-	<target name="run-ev-test" depends="ev-test">
-		<java classname="ev_test">
-			<classpath>
-				<path refid="classpath" />
-			</classpath>
-		</java>
-	</target>
-
-        <!--  ER-TEST  -->
-        <target name="er-test" depends="event-ring">
-          <javac srcdir="${src}" destdir="${build}">
-            <include name="er_test.java" />
-          </javac>
-        </target>
-        <target name="run-er-test" depends="er-test">
-          <java classname="er_test">
-            <classpath>
-              <path refid="classpath" />
-            </classpath>
-          </java>
-        </target>
-
-	<!--  LL-TEST  -->
-	<target name="ll-test" depends="init">
-		<javac srcdir="${src}" destdir="${build}">
-			<include name="ll_test.java" />
-		</javac>
-	</target>
-	<!--  RUN-LL-TEST  -->
-	<target name="run-ll-test" depends="ll-test">
-		<java classname="ll_test">
-			<classpath>
-				<path refid="classpath" />
-			</classpath>
-		</java>
-	</target>
-
-	<!-- SOCK-TEST-1  -->
-	<target name="sock-test-1" depends="init">
-		<javac srcdir="${src}" destdir="${build}">
-			<include name="testSocket1.java" />
-		</javac>
-	</target>
-	<!--  RUN-SOCK-TEST-1  -->
-	<target name="run-sock-test-1" depends="sock-test-1">
-		<java classname="testSocket1">
-			<classpath>
-				<path refid="classpath" />
-			</classpath>
-		</java>
-	</target>
-
-	<!-- SOCK-TEST-2  -->
-	<target name="sock-test-2" depends="init">
-		<javac srcdir="${src}" destdir="${build}">
-			<include name="sock_test_2.java" />
-		</javac>
-	</target>
-	<target name="run-sock-test-2" depends="sock-test-2">
-		<java classname="sock_test_2">
-			<classpath>
-				<path refid="classpath" />
-			</classpath>
-		</java>
-	</target>
-
-	<!-- AR-TEST  -->
-	<target name="ar-test" depends="ascii-rep">
-		<javac srcdir="${src}" destdir="${build}">
-			<include name="ar_test.java" />
-		</javac>
-	</target>
-	<target name="run-ar-test" depends="ar-test">
-		<java classname="ar_test">
-			<classpath>
-				<path refid="classpath" />
-			</classpath>
-		</java>
-	</target>
-	
-	<!-- HR-TEST  -->
-        <target name="hr-test" depends="hash-rep">
-          <javac srcdir="${src}" destdir="${build}">
-            <include name="hr_test.java" />
-          </javac>
-        </target>
-        <target name="run-hr-test" depends="hr-test">
-          <java classname="hr_test">
-            <classpath>
-              <path refid="classpath" />
-            </classpath>
-          </java>
-        </target>
-	
-	<!-- ARHR-TEST  -->
-        <target name="arhr-test" depends="ascii-rep">
-          <javac srcdir="${src}" destdir="${build}">
-            <include name="arhr_test.java" />
-          </javac>
-        </target>
-        <target name="run-arhr-test" depends="arhr-test">
-          <java classname="arhr_test">
-            <classpath>
-              <path refid="classpath" />
-            </classpath>
-          </java>
-        </target>
-	
-	<!-- STR-UTIL-TEST  -->
-        <target name="str-util-test" depends="string-util">
-          <javac srcdir="${src}" destdir="${build}">
-            <include name="str_util_test.java" />
-          </javac>
-        </target>
-        <target name="run-str-util-test" depends="str-util-test">
-          <java classname="str_util_test">
-            <classpath>
-              <path refid="classpath" />
-            </classpath>
-          </java>
-        </target>
-	
-        <!-- MNG-TEST -->
-        <target name="test-mng" depends="midi-note-generator">
-          <javac srcdir="${src}" destdir="${build}">
-            <include name="mng_test.java" />
-          </javac>
-        </target>
-
-	<!-- EXC-TEST -->
-        <target name="exc-test" depends="ascii-rep">
-          <javac srcdir="${src}" destdir="${build}">
-            <include name="exc_test.java" />
-          </javac>
-        </target>
-        <target name="run-exc-test" depends="exc-test">
-          <java classname="exc_test">
-            <classpath>
-              <path refid="classpath" />
-            </classpath>
-          </java>
-        </target>
-
-        <!-- ********************************* -->	
-	
 	<!-- INIT -->
 	<target name="init">
-		<tstamp />
-		<mkdir dir="${build}" />
+		<tstamp/>
+		<mkdir dir="${build}"/>
+		<mkdir dir="${lib}"/>
+		<mkdir dir="${images}"/>
 	</target>
+
+	<!-- TEST -->
+	<target name="test" depends="init">
+		<javac srcdir="${src}" destdir="${build}">
+			<include name="test.java"/>
+			<classpath refid="er.classpath"/>
+		</javac>
+	</target>
+	<target name="run_test" depends="test">
+	   		<java classname="test">
+	       		<classpath>
+	           		<path refid="er.classpath" />
+	         	</classpath>
+	      	</java>
+	</target>
+
+	<!--
+	<target name="dist" 
+      depends="pdf_test"
+      description="generate the distribution" >
+		__ Create the distribution directory __
+		<mkdir dir="${dist}/lib"/>
+
+		__ Put everything in ${build} into the MyProject-${DSTAMP}.jar file __
+		<jar jarfile="${dist}/lib/MyProject-${DSTAMP}.jar" basedir="${build}"/>
+	</target>
+	-->
 
 	<!-- CLEAN -->
-	<target name="clean" description="clean up">
-		<delete dir="${build}" />
-		<delete dir="${dist}" />
+	<target name="clean" description="clean up" >
+		<!-- Delete the ${build} and ${dist} directory trees -->
+		<delete dir="${images}"/>
+		<delete dir="${build}"/>
+		<delete dir="${dist}"/>
 	</target>
-
 </project>
+
