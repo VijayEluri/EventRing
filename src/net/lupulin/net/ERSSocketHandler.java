@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+
 import java.net.Socket;
 
 import net.lupulin.event.EventRing;
@@ -30,9 +31,7 @@ public class ERSSocketHandler extends Thread {
         if( input == null ){ 
             done = true;
         }
-        //out.println("this: " + input );
-        //out.println( ER.get(1).toString() );
-        //System.out.println("input: " + input);
+        System.out.println("input: " + input);
         //System.out.println( ER.get(1).toString() );
         
         
