@@ -1,6 +1,8 @@
+<?xml version="1.0"?>
+<!-- <!DOCTYPE project []> -->
 
 <project name="eventring" 
-         default="test" 
+         default="basic_er_server"
          basedir=".">
 	<description>event-ring</description>
 
@@ -19,9 +21,11 @@
           	<exclude name="**/*Test*"/> 
       	</fileset>
       	-->
+		<!--
 		<fileset dir="${lib}">
 			<include name="**/*.jar"/>
 		</fileset>
+		-->
 	</path>
 
 	<!-- INIT -->
@@ -31,15 +35,15 @@
 		<mkdir dir="${lib}"/>
 	</target>
 
-	<!-- TEST -->
-	<target name="test" depends="init">
+
+	<target name="basic_er_server" depends="init">
 		<javac srcdir="${src}" destdir="${build}">
-			<include name="test.java"/>
+			<include name="basic_er_server.java" />
 			<classpath refid="er.classpath"/>
 		</javac>
 	</target>
-	<target name="run_test" depends="test">
-	   		<java classname="test">
+	<target name="run_basic_er_server" depends="basic_er_server">
+	   		<java classname="basic_er_server"> 
 	       		<classpath>
 	           		<path refid="er.classpath" />
 	         	</classpath>
