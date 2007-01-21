@@ -70,7 +70,7 @@ public class AsciiRep {
 
         // 3 -- check that the "key" parts are unique and non-blank
         boolean even = true;
-        HashSet hs = new HashSet();
+        HashSet<String> hs = new HashSet<String>();
         //for( String elem : split_arr ) {
         for( int i=0; i< split_arr.length; i++ ){
             String elem = split_arr[i];

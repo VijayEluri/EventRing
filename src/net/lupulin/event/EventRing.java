@@ -7,15 +7,15 @@ import java.util.Random;
 
 public class EventRing {
     
-    private LinkedList ev_ring; 
+    private LinkedList<AbsEvent> ev_ring; 
     private Random rand;
 
     //contructor
     public EventRing(){
-        ev_ring = new LinkedList();
+        ev_ring = new LinkedList<AbsEvent>();
         rand = new Random();
     }
-    public EventRing(LinkedList ev_ring){
+    public EventRing(LinkedList<AbsEvent> ev_ring){
         this.ev_ring = ev_ring;
         rand = new Random();
     }

@@ -8,20 +8,20 @@ import java.util.Iterator;
 
 public class HashRep {
     
-    private HashMap data = null;
+    private HashMap<String,String> data = null;
     private char sep = ':';
 
     //constructor
     public HashRep(){
-        data = new HashMap(); 
+        data = new HashMap<String,String>(); 
     }
-    public HashRep( HashMap data ){
+    public HashRep( HashMap<String,String> data ){
         //need a vaildate() method to validate all cells.
         //accepting the AsciiRep
         this.data = data;
     }
     public HashRep( AsciiRep ar ){
-        data = new HashMap(); 
+        data = new HashMap<String,String>(); 
         try {
             readAsciiRep( ar );
         } 
@@ -31,7 +31,7 @@ public class HashRep {
     }
 
     public void printData(){
-        Iterator it = data.keySet().iterator();
+        Iterator<String> it = data.keySet().iterator();
         String key = null;
         //for (String key : data.keySet()) {
         while( it.hasNext() ){
@@ -45,7 +45,8 @@ public class HashRep {
     }
 
     public void readAsciiRep( AsciiRep ar )
-        throws EventException {
+        throws EventException 
+    {
         //need to somehow call AsciiRep's validate() method before 
         //accepting the AsciiRep
 
@@ -86,7 +87,7 @@ public class HashRep {
         StringBuffer buf = new StringBuffer();
 
         boolean first_run = true;
-        Iterator it = data.keySet().iterator();
+        Iterator<String> it = data.keySet().iterator();
         String key = null;
         //for (String key : data.keySet()) {
         while( it.hasNext() ){
@@ -156,11 +157,11 @@ public class HashRep {
         System.out.println("test...HashRep");
     }
     
-    public HashMap getData(){
+    public HashMap<String,String> getData(){
         return data;
     }
     
-    public void setData( HashMap  data){
+    public void setData( HashMap<String,String>  data){
         this.data = data;
     }
     

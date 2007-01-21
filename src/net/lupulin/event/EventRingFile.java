@@ -10,9 +10,9 @@ import java.util.LinkedList;
 public class EventRingFile {
     //public String filename;
     
-    public static LinkedList GetDataFromFile( String ev_file ){
+    public static LinkedList<AbsEvent> GetDataFromFile( String ev_file ){
 
-        LinkedList ev_ring_data = new LinkedList();
+        LinkedList<AbsEvent> ev_ring_data = new LinkedList<AbsEvent>();
         //EventRing  er = null;
         AsciiRep ar = null;
         AbsEvent ev = null;

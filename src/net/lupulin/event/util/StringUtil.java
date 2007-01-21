@@ -222,7 +222,7 @@ public class StringUtil {
         
         // 4 -- check that the "key" parts are unique and non-blank
         boolean even = true;
-        HashSet hs = new HashSet();
+        HashSet<String> hs = new HashSet<String>();
         try {
             String[] str_arr = extract_regions( tmp_str_1, num_seps, sep );
             //Iterator str_arr_iter = str_arr.iterator();
