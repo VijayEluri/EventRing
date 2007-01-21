@@ -1,4 +1,4 @@
-/* basic_er_server.java../Ma */
+/* basic_er_server.java */
 
 
 import net.lupulin.net.EventRingServer;
