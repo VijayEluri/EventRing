@@ -10,8 +10,8 @@ public class  EventUtil {
 
     //constructor
     public EventUtil() {
-        knownEventTypes = new EventRing("EventUtil-EventRing");
-        
+        knownEventTypes = new EventRing();
+
         //populate the  event ring withone each of each
         //know  events
 
@@ -20,10 +20,10 @@ public class  EventUtil {
           AbsEvent  aev = new AbsEvent();
           knownEventTypes.add(aev);
         */
-        
+
         Type1Event ev1 = new Type1Event();
         knownEventTypes.add(ev1);
-        
+
         Type2Event ev2 = new Type2Event();
         knownEventTypes.add(ev2);
     }

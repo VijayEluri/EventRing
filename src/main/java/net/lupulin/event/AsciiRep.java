@@ -1,5 +1,3 @@
-/* AsciiRep.java */
-
 package net.lupulin.event;
 
 import java.util.HashSet;
@@ -7,7 +5,7 @@ import java.util.HashSet;
 import net.lupulin.event.util.StringUtil;
 
 public class AsciiRep {
-    
+
     private String data = null;
     private char sep = ':';
 
@@ -41,21 +39,21 @@ public class AsciiRep {
     //we want to stop using this one
     public boolean validate_old(){
         boolean ret_val = false;
-            
+
         // 1 -- check that its surrounded by "^" and "$"
         char begin = data.charAt( 0 );
         char end   = data.charAt( data.length() - 1 );
         if( (begin != '^') || (end != '$') ){
             System.out.println( "BAD" );
             return( false );
-        } 
+        }
         // tmp_str_1 is now the String stripped of the outer "^" and "$"
         String tmp_str_1 = new String( data.substring( 2, data.length()-1 ));
-        
 
 
 
-        // 2 -- check thet there are an even number of elements 
+
+        // 2 -- check thet there are an even number of elements
         //     ( key/values come in pairs )
 
         /* StringUtil */
@@ -64,7 +62,7 @@ public class AsciiRep {
         if( (split_arr.length % 2) == 0 ){
             ret_val = true;
         } else {
-            System.out.println( "BAD-NUM" );            
+            System.out.println( "BAD-NUM" );
             return( false );
         }
 
@@ -92,7 +90,7 @@ public class AsciiRep {
         }
         ret_val = true;
 
-        // 4 -- exception case #1 -- $sep char can be the last char between ^ and $, and still pass as 
+        // 4 -- exception case #1 -- $sep char can be the last char between ^ and $, and still pass as
         //    due to the way substring() parses out the parts.
         //    (I'm just gonna check for that last $sep on the string, and call INVALID if its there.)
         //    ((furthermore this check should come earlier, but since its a hack-fix, its going here.))
@@ -101,11 +99,11 @@ public class AsciiRep {
             System.out.println( "BAD-ending sep string-:" );
             return( false );
         }
-        
+
         return ret_val;
 
     }
-    
+
     public void setSep( char sep ){
         this.sep = sep;
     }
@@ -114,11 +112,11 @@ public class AsciiRep {
         return sep;
     }
 
-    
+
     public String getData(){
         return data;
     }
-    
+
     public void setData(String data)
         throws EventException {
 
@@ -127,5 +125,5 @@ public class AsciiRep {
             throw new EventException("ascii-string did not validate() in setData()");
         }
      }
-    
-}   
+
+}

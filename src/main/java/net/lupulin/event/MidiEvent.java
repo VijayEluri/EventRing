@@ -1,15 +1,13 @@
-/* MidiEvent.java */
-
 package net.lupulin.event;
 
 public class MidiEvent extends AbsEvent {
-    final static public String EVENT_TYPE = "MidiEvent"; 
+    final static public String EVENT_TYPE = "MidiEvent";
 
     private int note;      // 0 - 127
     private int duration;  // ?
     private int velocity;  // 0 - 127
     private int channel;   // 0 - 15
-    
+
     //constructor
     public MidiEvent(){}
     public MidiEvent( AsciiRep ascii_rep ){
@@ -26,22 +24,22 @@ public class MidiEvent extends AbsEvent {
 
         /*
           return(
-          "[note:" + note     +    
+          "[note:" + note     +
           " dur:"  + duration +
           " vel:"  + velocity +
           " chan:" + channel  + "]" );
         */
     }
-            
+
     public void setAsciiRep(){
         AsciiRep ar = new AsciiRep();
-        String ar_str = new String();
+        String ar_str;
         char sep = ar.getSep();
 
         ar_str = "^" + sep +
             "NOTE" + sep + Integer.toString(note)     + sep +
-            "DUR"  + sep + Integer.toString(duration) + sep +            
-            "VEL"  + sep + Integer.toString(velocity) + sep +            
+            "DUR"  + sep + Integer.toString(duration) + sep +
+            "VEL"  + sep + Integer.toString(velocity) + sep +
             "CHAN" + sep + Integer.toString(channel)  + "$" ;
         try{
             ar.setData( ar_str );
@@ -67,4 +65,4 @@ public class MidiEvent extends AbsEvent {
     }
 
 
-}   
+}

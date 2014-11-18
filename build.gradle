@@ -1,0 +1,12 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+//mainClassName = "org.oldcode.test23.Main"
+mainClassName = "basic_er_server"
+
+repositories {
+  mavenCentral()
+}

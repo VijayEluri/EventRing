@@ -1,5 +1,3 @@
-/* EventException.java */
-
 package net.lupulin.event;
 
 class EventException extends Exception {
