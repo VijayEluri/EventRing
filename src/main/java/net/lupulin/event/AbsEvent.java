@@ -1,12 +1,8 @@
 package net.lupulin.event;
 
 public class AbsEvent {
-  final static public String EVENT_TYPE = "AbsEvent";
-
   protected AsciiRep data;
-  //protected char sep = ':';
 
-  //constructor
   public AbsEvent(){}
   public AbsEvent( AsciiRep ar ){
       data = ar;

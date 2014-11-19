@@ -1,9 +1,7 @@
 package net.lupulin.event;
 
 class EventException extends Exception {
-
-    public EventException(){}
-    public EventException(String exc_str){
-        super( exc_str );
+    public EventException(String exc_str) {
+        super(exc_str);
     }
 }

@@ -8,11 +8,6 @@ public class  MidiEventGenerator {
 
     public MidiEventGenerator(){
         rand = new Random();
-        //midi_hash = new HashMap();
-    }
-
-    public void test(){
-        System.out.println(  random_midi_note() );
     }
 
     private int rand_0_127(){
@@ -25,10 +20,6 @@ public class  MidiEventGenerator {
 
     private int rand_1_4(){
         return rand.nextInt(4) + 1; /* 1-4 */
-    }
-
-    private int random_midi_note(){
-        return rand_0_127();
     }
 
     public MidiEvent getRandMidiEvent(){
